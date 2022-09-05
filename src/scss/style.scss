@@ -1,20 +1,40 @@
 @import "~bootstrap/scss/bootstrap";
 $primary-color: #1a1a1a;
 $yellow-color: #fbd319;
+$secondary-color: #121212;
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
 * {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
-    color: aliceblue !important;
     box-sizing: border-box;
 }
-
+@mixin icon($f-size, $color) {
+    font-size: $f-size;
+    color: $color;
+}
+i {
+    color: $yellow-color;
+}
 body {
     margin: 0;
     padding: 0;
     background-color: $primary-color;
 }
+h1 {
+    padding-top: 50px;
+    color: $yellow-color;
+    margin-bottom: 50px;
+    text-align: center;
+}
 .navbar {
-    background-color: #121212 !important;
+    background-color: $secondary-color !important;
     justify-content: flex-end !important;
 }
 .navbar-collapse {
@@ -24,9 +44,94 @@ body {
 .navbar-toggler {
     background-color: $primary-color;
 }
-.navbar-nav {
+.swPedia {
+    font-size: 24px;
+    transition: 0.3s;
+    &:hover {
+        color: $yellow-color;
+        transform: scale(1.2);
+    }
+    &-icon {
+        &:hover {
+            transition: 0.3s;
+            color: $yellow-color;
+        }
+    }
 }
-a:hover {
-    color: #fbd319 !important;
-    transition: 0.3s !important;
+.link {
+    position: relative;
+    text-decoration: none;
+    transition: 0.3s;
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 3px;
+        background-color: $yellow-color;
+        bottom: 3px;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 0.3s ease-in-out;
+    }
+    &:hover {
+        color: $yellow-color !important;
+        &::before {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+    }
+}
+
+.search-sect {
+    padding-top: 78px;
+   
+}
+.searchSect-container {
+    width: 100%;
+    background-image: url(../images/bg3.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.inp {
+    max-width: 400px !important;
+    height: 50px;
+    background-color: $secondary-color;
+    transition: 0.3s;
+    border: 2px solid #2a2a2a !important;
+    padding-left: 40px;
+    &:focus {
+        background-color: aliceblue;
+        color: $primary-color !important;
+        color: black;
+    }
+
+}
+.custom-container {
+    max-width: 650px;
+}
+.input-container {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+.search-icon {
+    @include icon(15px, rgb(255, 255, 255));
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 15px;
+}
+.header-icon {
+    @include icon(35px, $yellow-color);
+}
+.form-control:focus {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.427);
+}
+@include media-breakpoint-down(lg) {
+  
 }
