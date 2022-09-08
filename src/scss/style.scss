@@ -84,9 +84,8 @@ h1 {
     }
 }
 
-.search-sect {
+.searchSect {
     padding-top: 78px;
-   
 }
 .searchSect-container {
     width: 100%;
@@ -103,12 +102,15 @@ h1 {
     transition: 0.3s;
     border: 2px solid #2a2a2a !important;
     padding-left: 40px;
+    color: aliceblue;
+}
+.form-control {
     &:focus {
-        background-color: aliceblue;
-        color: $primary-color !important;
-        color: black;
+        border-color: $yellow-color;
+        background-color: $primary-color;
+        color: aliceblue;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $yellow-color;
     }
-
 }
 .custom-container {
     max-width: 650px;
@@ -128,10 +130,32 @@ h1 {
 .header-icon {
     @include icon(35px, $yellow-color);
 }
-.form-control:focus {
-    border-color: #ffffff !important;
-    box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.427);
+
+.form-activities {
+    text-align: center;
+    &-btn {
+        border: 1px solid $yellow-color;
+        color: $yellow-color;
+        margin: 30px 30px;
+        padding: 6px 20px;
+        transition: 0.3s;
+        &:hover {
+            color: $yellow-color;
+            transition: 0.3s;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $yellow-color;
+        }
+    }
+    &-select {
+        @extend .form-activities-btn;
+        &:focus {
+            color: $yellow-color;
+            transition: 0.3s;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $yellow-color;
+        }
+        background-color: transparent;
+        text-align: left;
+    }
 }
+
 @include media-breakpoint-down(lg) {
-  
 }
