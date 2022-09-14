@@ -31,7 +31,7 @@
 						<a class="nav-link my-2 mx-4 fs-5 link" href="#films">Films</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link my-2 mx-4 fs-5 link" href="#">Link 3</a>
+						<a class="nav-link my-2 mx-4 fs-5 link" href="#">Coming soon...</a>
 					</li>
 				</ul>
 			</div>
@@ -48,28 +48,39 @@
 				</div>
 				<div class="form-activities">
 					<select name="select" id="select" class="form-activities-select btn">
-						<option value="opt1">Option1</option>
-						<option value="opt2">Option2</option>
+						<option value="films">Films</option>
+						<option value="people">People</option>
+						<option value="planets">Planets</option>
+						<option value="species">Species</option>
+						<option value="starships">Starships</option>
+						<option value="vehicles">Vehicles</option>
 					</select>
-					<input type="submit" class="form-activities-btn btn" value="Submit">
+					<input type="submit" id="submit" class="form-activities-btn" value="Submit">
+
 				</div>
 
 			</form>
 
 		</section>
+		<a name='search-anchor' class="searchAnchor"> </a>
+	</div>
+
+
+	<div class="output-container container-xxl" id='output-container'>
+
 	</div>
 
 	<section class="filmsSect container-xxl" id="films">
-		<h2>star wars films series <i class="fa-solid fa-jedi"></i></h2>
+		<h2><i class="fa-solid fa-jedi"></i> star wars films <i class="fa-solid fa-jedi"></i></h2>
 		<div class="row row-cols-2 justify-content-center mb-5 mt-5">
 			<div class="col col-md-4">
 				<div class="card bg-dark">
 					<img src="../src/images/star-wars-poster1.jpg" class="card-img" alt="star wars poster">
 					<div class="middle">
-						<button class="btn card-btn">More Info...</button>
+						<button class="btn card-btn" id='4'>More Info</button>
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">Star Wars the Phantom Menace</h5>
+						<h5 class="card-title">The Phantom Menace</h5>
 					</div>
 				</div>
 			</div>
@@ -77,10 +88,10 @@
 				<div class="card bg-dark">
 					<img src="../src/images/star-wars-poster2.jpg" class="card-img" alt="star wars poster">
 					<div class="middle">
-						<button class="btn card-btn">More Info...</button>
+						<button class="btn card-btn" id='5'>More Info</button>
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">Star Wars Attack of the Clones</h5>
+						<h5 class="card-title">Attack of the Clones</h5>
 					</div>
 				</div>
 			</div>
@@ -88,10 +99,10 @@
 				<div class="card bg-dark">
 					<img src="../src/images/star-wars-poster3.jpg" class="card-img" alt="star wars poster">
 					<div class="middle">
-						<button class="btn card-btn">More Info...</button>
+						<button class="btn card-btn" id="6">More Info</button>
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">Star Wars Revenge of the Sith</h5>
+						<h5 class="card-title">Revenge of the Sith</h5>
 					</div>
 				</div>
 			</div>
@@ -99,10 +110,10 @@
 				<div class="card bg-dark">
 					<img src="../src/images/star-wars-poster4.jpg" class="card-img" alt="star wars poster">
 					<div class="middle">
-						<button class="btn card-btn">More Info...</button>
+						<button class="btn card-btn" id="1">More Info</button>
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">Star Wars Revenge a New Hope</h5>
+						<h5 class="card-title">A New Hope</h5>
 					</div>
 				</div>
 			</div>
@@ -110,10 +121,10 @@
 				<div class="card bg-dark">
 					<img src="../src/images/star-wars-poster5.jpg" class="card-img" alt="star wars poster">
 					<div class="middle">
-						<button class="btn card-btn">More Info...</button>
+						<button class="btn card-btn" id="2">More Info</button>
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">Star Wars the Empire Strikes Back</h5>
+						<h5 class="card-title">The Empire Strikes Back</h5>
 					</div>
 				</div>
 			</div>
@@ -121,17 +132,19 @@
 				<div class="card bg-dark">
 					<img src="../src/images/star-wars-poster6.jpg" class="card-img" alt="star wars poster">
 					<div class="middle">
-						<button class="btn card-btn">More Info...</button>
+						<button class="btn card-btn" id="3">More Info</button>
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">Star Wars Return of the Jedi</h5>
+						<h5 class="card-title">Return of the Jedi</h5>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</section>
-
+	<div class="loader-container" id="loader">
+		<div class="loader"></div>
+	</div>
 
 </body>
 
