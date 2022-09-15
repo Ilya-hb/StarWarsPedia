@@ -2,7 +2,7 @@ import './scss/style.scss';
 import 'bootstrap';
 import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
-import $, { event } from 'jquery';
+import $, { event, get } from 'jquery';
 //import '../src/autocomplete.js';
 $((function () {
     const select = $('#select');
@@ -10,13 +10,32 @@ $((function () {
     const input = $('#inp');
     const cardBtn = $('.card-btn');
     const loader = $('#loader');
-
+    // const categorieBtn = ['.films-search', '.people-search', '.planets-search', '.species-search', '.starships-search', '.vehicles-search'];
+    // const links = ['https://swapi.dev/api/films/', 'https://swapi.dev/api/people/', 'https://swapi.dev/api/planets/', 'https://swapi.dev/api/species/', 'https://swapi.dev/api/starships', 'https://swapi.dev/api/vehicles/'];
     let outputContainer = $('#output-container');
+    const categorieBtns = {
+        '.films-search': 'https://swapi.dev/api/films/',
+        '.people-search': 'https://swapi.dev/api/people/',
+        '.planets-search': 'https://swapi.dev/api/people/',
+        '.species-search': 'https://swapi.dev/api/species/',
+        '.starships-search': 'https://swapi.dev/api/starships',
+        '.vehicles-search': 'https://swapi.dev/api/vehicles/'
+    }
+
+    $.each(Object.entries(categorieBtns).forEach(([key, value]) => {
+        $(key).on('click', () => {
+            loader.show();
+            getData(value);
+        })
+    }));
+
+
 
     function scrollToAnchor(aid) {
         var aTag = $("a[name='" + aid + "']");
         $('html,body').animate({ scrollTop: aTag.offset().top }, 'slow');
     }
+
     function getData(url) {
         $.ajax({
             url: url,
@@ -58,21 +77,7 @@ $((function () {
                             outputContainer.append(`<h3>${k}: ${v}</h3>`);
                         }
                         else if (Array.isArray(v)) {
-                            // outputContainer.append(`<p>${k}</p>`)
-                            // v.forEach(el => {
-                            //     outputContainer.append(`<span class='link'>${el}</span>\n`);
-                            // })
-                            // $('.link').on('click', (e, linkUrl) => {
-                            //     $.ajax({
-                            //         url: linkUrl,
-                            //         method: 'GET',
-                            //     }).done(function (data) {
-                            //         EventTarget.replaceWith(`${data.name}`);
-                            //     }).fail(function (error) {
-                            //         render('', error.responseJSON.detail);
-                            //     })
-                            //     e.preventDefault();
-                            // })
+                            return;
                         }
                         else { outputContainer.append(`<p>${k}: ${v}</p><hr>`); }
 
@@ -86,6 +91,7 @@ $((function () {
                         outputContainer.append(`<h3>${key}: ${value}</h3>`);
                     }
                     else if (Array.isArray(value)) {
+                        return;
                     }
                     else { outputContainer.append(`<p>${key}: ${value}</p><hr>`); }
                 });
@@ -94,4 +100,5 @@ $((function () {
         loader.hide();
         scrollToAnchor('search-anchor');
     }
+
 }))
