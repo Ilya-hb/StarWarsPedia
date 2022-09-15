@@ -10,15 +10,13 @@ $((function () {
     const input = $('#inp');
     const cardBtn = $('.card-btn');
     const loader = $('#loader');
-    // const categorieBtn = ['.films-search', '.people-search', '.planets-search', '.species-search', '.starships-search', '.vehicles-search'];
-    // const links = ['https://swapi.dev/api/films/', 'https://swapi.dev/api/people/', 'https://swapi.dev/api/planets/', 'https://swapi.dev/api/species/', 'https://swapi.dev/api/starships', 'https://swapi.dev/api/vehicles/'];
     let outputContainer = $('#output-container');
     const categorieBtns = {
         '.films-search': 'https://swapi.dev/api/films/',
         '.people-search': 'https://swapi.dev/api/people/',
         '.planets-search': 'https://swapi.dev/api/people/',
         '.species-search': 'https://swapi.dev/api/species/',
-        '.starships-search': 'https://swapi.dev/api/starships',
+        '.starships-search': 'https://swapi.dev/api/starships/',
         '.vehicles-search': 'https://swapi.dev/api/vehicles/'
     }
 
@@ -28,8 +26,6 @@ $((function () {
             getData(value);
         })
     }));
-
-
 
     function scrollToAnchor(aid) {
         var aTag = $("a[name='" + aid + "']");
@@ -43,8 +39,10 @@ $((function () {
         }).done(function (data) {
             if (data.count === 0) {
                 return render('', 'Not found');
+                scrollToAnchor('search-anchor');
             } else {
                 render(data,);
+                scrollToAnchor('search-anchor');
             }
         }).fail(function (error) {
             render('', error.responseJSON.detail);
@@ -60,6 +58,7 @@ $((function () {
 
     cardBtn.on('click', function () {
         getData(`https://swapi.dev/api/films/${this.id}`)
+        scrollToAnchor('search-anchor');
         loader.show();
     })
 
@@ -72,20 +71,30 @@ $((function () {
             if (data.count >= 1) {
                 $.each(Object.values(data['results']), (key, value) => {
                     $.each(value, (k, v) => {
-                        // console.log(`key:${k} \nvalue: ${v}`);
                         if (k === 'title' || k === 'name') {
                             outputContainer.append(`<h3>${k}: ${v}</h3>`);
                         }
                         else if (Array.isArray(v)) {
-                            return;
+                            outputContainer.append(`<p>${k}: </p>`);
+                            $.each(v, (el, val) => {
+                                outputContainer.append(`<a class="${el}${key}${k}">${val}</a><br>`);
+                                
+                                $(`.${el}${key}${k}`).on('click', (event) => {
+                                    loader.show();
+                                    $.ajax({
+                                        url: val,
+                                        method: 'GET',
+                                    }).done(function (data) {
+                                        $(`.${el}${key}${k}`).replaceWith(data.name)
+                                        loader.hide();
+                                    })
+                                })
+                            })
                         }
                         else { outputContainer.append(`<p>${k}: ${v}</p><hr>`); }
-
                     });
                 })
-
             } else {
-                // console.log('Data is not an Array!');
                 Object.entries(data).forEach(([key, value]) => {
                     if (key === 'title' || key === 'name') {
                         outputContainer.append(`<h3>${key}: ${value}</h3>`);
@@ -98,7 +107,5 @@ $((function () {
             }
         }
         loader.hide();
-        scrollToAnchor('search-anchor');
     }
-
 }))

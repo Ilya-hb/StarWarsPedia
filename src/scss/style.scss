@@ -21,6 +21,15 @@ $grid-breakpoints: (
     font-size: $f-size;
     color: $color;
 }
+a {
+    color: $secondary-color;
+    cursor: pointer;
+    &:hover{
+        color: $secondary-color;
+        text-shadow: 1px 1px 2px red, 0 0 1em rgb(225, 255, 0), 0 0 0.2em $secondary-color;
+        
+    }
+}
 i {
     color: $secondary-color;
 }
@@ -214,6 +223,7 @@ h4 {
     background-color: $dark-color !important;
 }
 .output-container {
+    text-align: center;
     position: relative;
     color: aliceblue;
     border: 2px solid $dark-color;
