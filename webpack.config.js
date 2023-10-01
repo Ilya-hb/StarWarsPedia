@@ -11,23 +11,40 @@ module.exports = {
     },
     mode: 'development',
     module: {
-        rules: [{
-            test: /\.(s*)css$/,
-            use: [
-                miniCss.loader,
-                'css-loader',
-                'sass-loader',
-            ]
-        }]
+        rules: [
+            {
+                test: /\.(s*)css$/,
+                use: [
+                    miniCss.loader,
+                    'css-loader',
+                    'sass-loader',
+                ]
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images/', // This sets the output path for images
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.html$/,
+                use: 'html-loader',
+            },
+        ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src/index.html')
+            template: path.resolve(__dirname, 'src/index.html'),
         }),
         new CleanWebpackPlugin(),
         new miniCss({
             filename: 'style.css',
         }),
-
     ]
 };

@@ -1,164 +1,228 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StarWarsPedia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/style.css" />
+    <!--DELETE AFTER DEPLOY-->
+  </head>
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>StarWarsPedia</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="../dist/style.css">
-	<!--DELETE AFTER DEPLOY-->
-</head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand mx-4 swPedia" href="#"
+          >StarWarsPedia
+          <i class="fa-solid fa-book-journal-whills fs-4 swPedia-icon"></i>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Переключатель навигации"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link my-2 mx-4 fs-5 link" href="#search">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link my-2 mx-4 fs-5 link" href="#categories"
+                >Categories</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link my-2 mx-4 fs-5 link" href="#films">Films</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-<body>
-	<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-		<div class="container-fluid">
-			<a class="navbar-brand mx-4 swPedia" href="#">StarWarsPedia
-				<i class="fa-solid fa-book-journal-whills fs-4 swPedia-icon"></i>
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false" aria-label="Переключатель навигации">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link my-2 mx-4 fs-5 link" href="#search">Search</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link my-2 mx-4 fs-5 link" href="#categories">Categories</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link my-2 mx-4 fs-5 link" href="#films">Films</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <div class="searchSect-container">
+      <section class="searchSect container-sm custom-container" id="search">
+        <h1>
+          may the force be with you <i class="fa-solid fa-bolt header-icon"></i>
+        </h1>
+        <form action="" class="form">
+          <div class="input-container">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input
+              type="text"
+              id="inp"
+              class="form-control inp m-auto"
+              placeholder="Search..."
+            />
+          </div>
+          <div class="form-activities">
+            <select
+              name="select"
+              id="select"
+              class="form-activities-select btn"
+            >
+              <option value="films">Films</option>
+              <option value="people">People</option>
+              <option value="planets">Planets</option>
+              <option value="species">Species</option>
+              <option value="starships">Starships</option>
+              <option value="vehicles">Vehicles</option>
+            </select>
+            <input
+              type="submit"
+              id="submit"
+              class="form-activities-btn"
+              value="Submit"
+            />
+          </div>
+        </form>
+      </section>
+      <a name="search-anchor" class="searchAnchor"> </a>
+    </div>
 
-	<div class="searchSect-container">
-		<section class="searchSect container-sm custom-container" id="search">
-			<h1>may the force be with you <i class="fa-solid fa-bolt header-icon"></i></h1>
-			<form action="" class="form">
-				<div class="input-container">
-					<i class="fa-solid fa-magnifying-glass search-icon"></i>
-					<input type="text" id="inp" class="form-control inp m-auto" placeholder="Search...">
-				</div>
-				<div class="form-activities">
-					<select name="select" id="select" class="form-activities-select btn">
-						<option value="films">Films</option>
-						<option value="people">People</option>
-						<option value="planets">Planets</option>
-						<option value="species">Species</option>
-						<option value="starships">Starships</option>
-						<option value="vehicles">Vehicles</option>
-					</select>
-					<input type="submit" id="submit" class="form-activities-btn" value="Submit">
+    <div class="output-container container-xxl" id="output-container"></div>
+    <section class="searchSect" id="categories">
+      <div class="container-xxl">
+        <div class="row">
+          <h2>
+            <i class="fa-solid fa-list-ul"></i> Categories
+            <i class="fa-solid fa-list-ul"></i>
+          </h2>
+          <div class="col">
+            <button class="categories-btn films-search">Films</button>
+          </div>
+          <div class="col">
+            <button class="categories-btn people-search">People</button>
+          </div>
+          <div class="col">
+            <button class="categories-btn planets-search">Planets</button>
+          </div>
+          <div class="col">
+            <button class="categories-btn species-search">Species</button>
+          </div>
+          <div class="col">
+            <button class="categories-btn starships-search">Starships</button>
+          </div>
+          <div class="col">
+            <button class="categories-btn vehicles-search">Vehicles</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="filmsSect container-xxl" id="films">
+      <h2>
+        <i class="fa-solid fa-jedi"></i> star wars films
+        <i class="fa-solid fa-jedi"></i>
+      </h2>
+      <div class="row row-cols-2 justify-content-center mb-5 mt-5">
+        <div class="col col-md-4">
+          <div class="card bg-dark">
+            <img
+              src="./images/star-wars-poster1.jpg"
+              class="card-img"
+              alt="star wars poster"
+            />
+            <div class="middle">
+              <button class="btn card-btn" id="4">More Info</button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">The Phantom Menace</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-4">
+          <div class="card bg-dark">
+            <img
+              src="./images/star-wars-poster2.jpg"
+              class="card-img"
+              alt="star wars poster"
+            />
+            <div class="middle">
+              <button class="btn card-btn" id="5">More Info</button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Attack of the Clones</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-4">
+          <div class="card bg-dark">
+            <img
+              src="./images/star-wars-poster3.jpg"
+              class="card-img"
+              alt="star wars poster"
+            />
+            <div class="middle">
+              <button class="btn card-btn" id="6">More Info</button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Revenge of the Sith</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-4">
+          <div class="card bg-dark">
+            <img
+              src="./images/star-wars-poster4.jpg"
+              class="card-img"
+              alt="star wars poster"
+            />
+            <div class="middle">
+              <button class="btn card-btn" id="1">More Info</button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">A New Hope</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-4">
+          <div class="card bg-dark">
+            <img
+              src="./images/star-wars-poster5.jpg"
+              class="card-img"
+              alt="star wars poster"
+            />
+            <div class="middle">
+              <button class="btn card-btn" id="2">More Info</button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">The Empire Strikes Back</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col col-md-4">
+          <div class="card bg-dark">
+            <img
+              src="./images/star-wars-poster6.jpg"
+              class="card-img"
+              alt="star wars poster"
+            />
+            <div class="middle">
+              <button class="btn card-btn" id="3">More Info</button>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Return of the Jedi</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				</div>
-
-			</form>
-
-		</section>
-		<a name='search-anchor' class="searchAnchor"> </a>
-	</div>
-
-
-	<div class="output-container container-xxl" id='output-container'>
-
-	</div>
-	<section class="searchSect" id="categories">
-		<div class="container-xxl">
-			<div class="row">
-				<h2><i class="fa-solid fa-list-ul"></i> Categories <i class="fa-solid fa-list-ul"></i></h2>
-				<div class="col"><button class="categories-btn films-search">Films</button></div>
-				<div class="col"><button class="categories-btn people-search">People</button></div>
-				<div class="col"><button class="categories-btn planets-search">Planets</button></div>
-				<div class="col"><button class="categories-btn species-search">Species</button></div>
-				<div class="col"><button class="categories-btn starships-search">Starships</button></div>
-				<div class="col"><button class="categories-btn vehicles-search">Vehicles</button></div>
-			</div>
-		</div>
-	</section>
-	<section class="filmsSect container-xxl" id="films">
-		<h2><i class="fa-solid fa-jedi"></i> star wars films <i class="fa-solid fa-jedi"></i></h2>
-		<div class="row row-cols-2 justify-content-center mb-5 mt-5">
-			<div class="col col-md-4">
-				<div class="card bg-dark">
-					<img src="../src/images/star-wars-poster1.jpg" class="card-img" alt="star wars poster">
-					<div class="middle">
-						<button class="btn card-btn" id='4'>More Info</button>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">The Phantom Menace</h5>
-					</div>
-				</div>
-			</div>
-			<div class="col col-md-4">
-				<div class="card bg-dark">
-					<img src="../src/images/star-wars-poster2.jpg" class="card-img" alt="star wars poster">
-					<div class="middle">
-						<button class="btn card-btn" id='5'>More Info</button>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Attack of the Clones</h5>
-					</div>
-				</div>
-			</div>
-			<div class="col col-md-4">
-				<div class="card bg-dark">
-					<img src="../src/images/star-wars-poster3.jpg" class="card-img" alt="star wars poster">
-					<div class="middle">
-						<button class="btn card-btn" id="6">More Info</button>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Revenge of the Sith</h5>
-					</div>
-				</div>
-			</div>
-			<div class="col col-md-4">
-				<div class="card bg-dark">
-					<img src="../src/images/star-wars-poster4.jpg" class="card-img" alt="star wars poster">
-					<div class="middle">
-						<button class="btn card-btn" id="1">More Info</button>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">A New Hope</h5>
-					</div>
-				</div>
-			</div>
-			<div class="col col-md-4">
-				<div class="card bg-dark">
-					<img src="../src/images/star-wars-poster5.jpg" class="card-img" alt="star wars poster">
-					<div class="middle">
-						<button class="btn card-btn" id="2">More Info</button>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">The Empire Strikes Back</h5>
-					</div>
-				</div>
-			</div>
-			<div class="col col-md-4">
-				<div class="card bg-dark">
-					<img src="../src/images/star-wars-poster6.jpg" class="card-img" alt="star wars poster">
-					<div class="middle">
-						<button class="btn card-btn" id="3">More Info</button>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Return of the Jedi</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</section>
-
-	<div class="loader-container" id="loader">
-		<div class="loader"></div>
-	</div>
-
-</body>
-
+    <div class="loader-container" id="loader">
+      <div class="loader"></div>
+    </div>
+  </body>
 </html>
